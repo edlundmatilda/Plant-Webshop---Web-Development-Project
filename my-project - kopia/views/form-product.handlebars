@@ -1,0 +1,30 @@
+<div>
+    {{#if product.pid}}
+        <h1>Edit product</h1>
+    {{else}}
+        <h1>New product</h1>
+    {{/if}}
+    <div>
+        {{#if product.pid}}
+            <form action="/catalog/modify/{{product.pid}}" method="POST" id="product-form">
+        {{else}}
+            <form action="/catalog/new" method="post" id="product-form">
+        {{/if}}
+            <fieldset>
+                <legend>Product</legend>
+                <label for="pname">Name:</label>
+                <input type="text" name="pname" id="pname" {{#if product.pname}} value="{{product.pname}}"{{/if}}><br>
+                <label for="pdesc">Description:</label>
+                <textarea name="pdesc" id="pdesc" rows="4" cols="40">{{#if product.pdesc}}{{product.pdesc}}{{/if}}</textarea><br>
+                <label for="price">Price:</label>
+                <input type="text" name="price" id="price" {{#if product.price}} value="{{product.price}}"{{/if}}><br>
+                <label for="url">URL:</label>
+                <input type="text" name="url" id="url" {{#if product.url}} value="{{product.url}}"{{/if}}><br>
+                <input type="submit" {{#if product.pid}} value="Edit" {{else}} value="Create" {{/if}}>
+            </fieldset>
+        </form>
+        {{#if error}}
+            <p class="error">{{error}}</p>
+        {{/if}}
+    </div>
+</div>

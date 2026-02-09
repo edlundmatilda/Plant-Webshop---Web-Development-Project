@@ -1,0 +1,20 @@
+{{#if session.isLoggedIn}}
+    <div class="profile-container">
+        <div id="welcome-message">
+            <h1 class="small-title">Welcome {{session.un}}!</h1>
+            <p>What do you want to do?</p>
+        </div>
+        <div>
+            <ul class="content-list">
+                {{#if session.isAdmin}} 
+                    <li><a href="/profile/users">Handle users</a></li>
+                    <li><a href="/profile/orders">Handle orders</a></li>
+                {{else}} 
+                    <li><a href="/profile/orders">View orders</a></li>
+                {{/if}}
+                <li><a>Change username</a></li>
+                <li><a>Change password</a></li>
+            </ul>
+        </div>
+    </div>
+{{/if}}

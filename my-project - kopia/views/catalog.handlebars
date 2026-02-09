@@ -1,0 +1,60 @@
+<div class="catalog-container">
+    <div class="catalog-left-column">
+        {{#if session.isAdmin}}
+            <p>
+                <form style="display:inline" method="GET" action="/catalog/new">
+                    <button type="sumbit" class="admin-button">Add product</button>
+                </form>
+            </p>
+        {{/if}}
+        {{#if error}}
+            <p class="error">{{error}}</p>
+        {{/if}}
+    </div>
+    <div class="catalog-right-column">
+        <div id="mobile-button">
+                <form style="display:inline" method="GET" action="/catalog/new">
+                    <button type="sumbit" class="admin-button">Add product</button>
+                </form>
+            </div>
+        <div class="my-products">
+            {{#each products}}
+                <div class="product-item">
+                    <a href="/catalog/{{pid}}">
+                        <img src="{{url}}" alt="{{pname}}" class="product-image">
+                    </a>
+                    <a href="/catalog/{{pid}}">
+                        <p id="product-name">{{pname}}</p>
+                    </a>
+                    {{#if ../session.isAdmin}}
+                        <form style="display:inline" method="GET" action="/catalog/modify/{{pid}}">
+                            <button type="submit" class="admin-button">Edit</button>
+                        </form>
+                        <form style="display:inline" method="POST" action="/catalog/delete/{{pid}}">
+                            <button type="submit" class="admin-button">X</button>
+                        </form>
+                    {{/if}}
+                    <p id="price">{{price}} SEK</p>
+                </div>
+            {{/each}}
+        </div>
+        <div class="pagination">
+            <ul>
+                <li><a href="/catalog?page=1">&laquo;</a></li>
+                {{#if hasPrevPage}}
+                    <li><a href="/catalog?page={{prevPage}}">&lsaquo;</li>
+                {{/if}}
+                {{#each pages}}
+                        <li><a href="/catalog?page={{this}}">{{this}}</a></li>
+                {{/each}}
+                {{#if hasNextPage}}
+                    <li><a href="/catalog?page={{nextPage}}">&rsaquo;</a></li>
+                {{/if}}
+                <li><a href="/catalog?page={{totalPages}}">&raquo;</a></li>
+            </ul>
+            {{#if error}}
+                <p class="error">{{error}}</p>
+            {{/if}}
+        </div>
+    </div>
+</div>

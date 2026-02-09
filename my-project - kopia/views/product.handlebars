@@ -1,0 +1,22 @@
+<div class="product-container">
+    <div class="product-left">
+        <img src="{{product.url}}" alt="{{product.pname}}"/>
+    </div>
+    <div class="product-right">
+        <h1 id="product-title">{{product.pname}}</h1>
+        <p id="product-description">{{product.pdesc}}</p>
+        <button class="button" id="purchase-button">Purchase</button>
+        {{#if error}}
+            <p class="error">{{error}}</p>
+        {{/if}}
+    </div>
+    <div class="mobile-product">
+        <h1 id="product-title">{{product.pname}}</h1>
+        <p id="product-description">{{product.pdesc}}</p>
+        <button class="button" id="purchase-button">Purchase</button>
+        <img id="p-image" src="{{product.url}}" alt="{{product.pname}}"/>
+        {{#if error}}
+            <p class="error">{{error}}</p>
+        {{/if}}
+    </div>
+</div>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My project</title>
+    <link rel="stylesheet" href='/css/styles.css'>
+    <link href='https://fonts.googleapis.com/css?family=Mona Sans' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Alex Brush' rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Mea Culpa' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Parisienne' rel='stylesheet'>
+    
+</head>
+    <body class="{{bodyClass}}">
+        <header class="site-header">
+            <nav>
+                <ul class = "navigation">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/catalog">Catalog</a></li>
+                    <li><a href="/about">About me</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    {{#if session.isLoggedIn}}
+                        <li class="welcome"><a href="/profile">Welcome, {{session.un}}!</a></li>
+                        <li class="logout"><a href="/logout">Logout</a></li>
+                    {{else}}
+                        <li class="login"><a href="/login">Login</a></li>
+                    {{/if}}
+                </ul>
+            </nav>
+            <nav class="mobile-nav">
+                <div class="dropdown">Menu
+                    <ul class="dropdown-content">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/catalog">Catalog</a></li>
+                        <li><a href="/about">About me</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                        {{#if session.isLoggedIn}}
+                            <li><a href="/profile">Welcome, {{session.un}}!</a></li>
+                            <li><a href="/logout">Logout</a></li>
+                        {{else}}
+                            <li><a href="/login">Login</a></li>
+                        {{/if}}
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        {{{body}}}
+    </body>
+</html>

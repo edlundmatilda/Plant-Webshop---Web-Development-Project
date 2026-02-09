@@ -1,0 +1,31 @@
+<div class="user-column">
+    <div>
+        <h1 class="small-title">Users</h1>
+    </div>
+    <div class="users">
+        <form action="/profile/users" method="POST" id="user-form">
+            <table>
+                <tr>
+                    <th></th>
+                    <th>Username</th>
+                    <th>is Admin</th>
+                </tr>
+                {{#each user}}
+                    <tr>
+                        <td>
+                            <form style="display:inline" method="POST" action="/profile/users/delete/{{uid}}">
+                            <button type="submit" class="admin-button">X</button>
+                            </form>
+                        </td>
+                        <td>{{username}}</td>
+                        <td><input type="checkbox" name="{{uid}}" value="yes" {{#if isAdmin}}checked {{/if}}> </td>   
+                    </tr>
+                {{/each}}
+            </table>
+            <input type="submit" value="Submit">
+        </form>
+        {{#if error}}
+            <p>{{error}}</p>
+        {{/if}}
+    </div>
+</div>

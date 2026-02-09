@@ -1,0 +1,25 @@
+<div class="login-container">
+    <div class="login-column">
+        <div class="login-form">
+            <form action="/login/new" method="post">
+                <h1>Create User</h1>
+                <div class="login-box">
+                    <label for="un">Username:</label><br>
+                    <input type="text" name="un" id="un"><br>
+                </div>
+                <div class="login-box">
+                    <label for="pw">Password:</label><br>
+                    <input type="password" name="pw" id="pw"><br>
+                </div>
+                <div class="login-box">
+                    <label for="pw2">Confirm password:</label><br>
+                    <input type="password" name="pw2", id="pw2"><br>
+                </div>
+                <input type="submit" id="submit" value="Create">
+                {{#if error}}
+                    <p class="error">{{error}}</p>
+                {{/if}}
+            </form>
+        </div>
+    </div>
+</div>

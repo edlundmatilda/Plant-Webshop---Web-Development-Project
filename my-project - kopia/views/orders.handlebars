@@ -1,0 +1,20 @@
+<div class="orders-container">
+    <h1 class="small-title">Orders</h1>
+    <div class="orders-box">
+        {{#each orders}}
+            <details>
+                <summary>Order: {{oid}} | User: {{username}} | Status: {{status}} | Date: {{date}} </summary>
+                <ul>
+                    {{#each products}}
+                        <li>
+                            <p><img class="small-image" src="{{url}}"/> {{pname}} - {{price}} SEK | x{{quantity}}</p>
+                        </li>
+                    {{/each}}
+                </ul>
+            </details>
+        {{/each}}
+        {{#if error}}
+            <p>{{error}}</p>
+        {{/if}}
+    </div>
+</div>
